@@ -1,5 +1,6 @@
 package com.ohmymoon.springboard.controller;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,37 +23,46 @@ public class ArticleControllerTest {
         this.mvc = mvc;
     }
 
+    @Disabled
     @DisplayName("[view][GET] 게시글 리스트 (정상호출)")
     @Test
     public void givenNothing_whenRequestingArticlesView_thenReturnArticlesView() throws Exception {
         mvc.perform(get("/articles"))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.TEXT_HTML))
+                .andExpect(MockMvcResultMatchers.view().name("articles/index"))
                 .andExpect(model().attributeExists("articles"));
     }
 
+    @Disabled
     @DisplayName("[view][GET] 게시글 상세페이지 (정상호출)")
     @Test
     public void givenNothing_whenRequestingArticleView_thenReturnArticleView() throws Exception {
         mvc.perform(get("/articles/1"))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.TEXT_HTML))
-                .andExpect(model().attributeExists("article"));
+                .andExpect(MockMvcResultMatchers.view().name("articles/detail"))
+                .andExpect(model().attributeExists("article"))
+                .andExpect(model().attributeExists("articleComments"));
     }
 
+    @Disabled
     @DisplayName("[view][GET] 게시글 검색 전용 페이지 (정상호출)")
     @Test
     public void givenNothing_whenRequestingArticleSearchView_thenReturnArticleSearchView() throws Exception {
         mvc.perform(get("/articles/search"))
                 .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.TEXT_HTML));
+                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.TEXT_HTML))
+                .andExpect(MockMvcResultMatchers.view().name("articles/search"));
     }
 
+    @Disabled
     @DisplayName("[view][GET] 게시글 해시태그 검색 전용 페이지 (정상호출)")
     @Test
     public void givenNothing_whenRequestingArticleHashtagSearchView_thenReturnArticleHashtagSearchView() throws Exception {
         mvc.perform(get("/articles/search-hashtag"))
                 .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.TEXT_HTML));
+                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.TEXT_HTML))
+                .andExpect(MockMvcResultMatchers.view().name("articles/search-hashtag"));
     }
 }
