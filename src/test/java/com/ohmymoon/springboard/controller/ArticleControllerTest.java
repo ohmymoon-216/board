@@ -23,13 +23,13 @@ public class ArticleControllerTest {
         this.mvc = mvc;
     }
 
-    @Disabled
+
     @DisplayName("[view][GET] 게시글 리스트 (정상호출)")
     @Test
     public void givenNothing_whenRequestingArticlesView_thenReturnArticlesView() throws Exception {
         mvc.perform(get("/articles"))
                 .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.TEXT_HTML))
+                .andExpect(MockMvcResultMatchers.content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
                 .andExpect(MockMvcResultMatchers.view().name("articles/index"))
                 .andExpect(model().attributeExists("articles"));
     }
