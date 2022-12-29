@@ -57,7 +57,4 @@ public class ArticleComment extends AuditingFields{
         return Objects.hash(id);
     }
 
-    @LastModifiedBy
-    @Column(nullable = false, length = 100)
-    private String modifiedBy;  // 수정자 아이디
 }
