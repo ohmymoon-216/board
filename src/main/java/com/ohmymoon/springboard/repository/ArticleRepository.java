@@ -3,7 +3,6 @@ package com.ohmymoon.springboard.repository;
 import com.ohmymoon.springboard.domain.Article;
 import com.ohmymoon.springboard.domain.QArticle;
 import com.querydsl.core.types.dsl.DateTimeExpression;
-import com.querydsl.core.types.dsl.SimpleExpression;
 import com.querydsl.core.types.dsl.StringExpression;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
